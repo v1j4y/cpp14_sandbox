@@ -1,10 +1,17 @@
 #include <iostream>
-#include <complex>
+#include <vector>
+#include <numeric>
+#include <algorithm>
 
 int main()
 {
-	auto func = [](auto input){return input*input;};
-	std::cout<<func(10.12)<<std::endl;
-	std::cout<<func(std::complex<double>(2,-2))<<std::endl;
+	std::vector<int> v(10);
+	std::iota(v.begin(),v.end(),1);
+	std::for_each(v.begin(),v.end(),  [](auto i){std::cout<<i<<" ";});
+
+	std::sort(v.begin(),v.end(),[](auto i, auto j){return (i>j);});
+
+	std::for_each(v.begin(),v.end(),  [](auto i){std::cout<<i<<" ";});
+
 	return 0;
 }
